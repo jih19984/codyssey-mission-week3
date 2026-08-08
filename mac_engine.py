@@ -14,6 +14,18 @@ def compute_score(pattern, filter_):
     return score
 
 
+def compute_score_flat(pattern, filter_):
+    # [보너스] 2차원 get(i, j) 대신 flatten()으로 1차원 배열로 바꾼 뒤
+    # 단일 for문으로 MAC 연산을 수행 (메모리 접근 패턴 단순화)
+    pattern_flat = pattern.flatten()
+    filter_flat = filter_.flatten()
+
+    score = 0
+    for idx in range(len(pattern_flat)):
+        score += pattern_flat[idx] * filter_flat[idx]
+    return score
+
+
 def judge(score_a, score_b, label_a, label_b):
     # abs(score_a - score_b) < EPSILON 이면 동점 -> "UNDECIDED" 반환
     # 그렇지 않으면 더 높은 점수의 라벨(label_a 또는 label_b) 반환
