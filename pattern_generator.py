@@ -2,15 +2,30 @@
 # 크기 N을 입력받아 N×N 십자가(Cross)/X 패턴을 규칙 기반으로 자동 생성한다.
 # 생성된 패턴은 모드 1 입력이나 성능 분석에 재활용할 수 있다.
 
+from matrix import Matrix
+
 
 def generate_cross(n):
     # 규칙: 중앙 행(row) 또는 중앙 열(col)이면 1, 아니면 0
     # 중앙 인덱스 c = (n - 1) // 2
-    pass
+    c = (n - 1) // 2
+    rows = []
+    for i in range(n):
+        row = []
+        for j in range(n):
+            row.append(1 if (i == c or j == c) else 0)
+        rows.append(row)
+    return Matrix.from_list(rows)
 
 
 def generate_x(n):
     # 규칙: 두 대각선(주대각선/부대각선) 위치면 1, 아니면 0
     # 주대각선: i == j
     # 부대각선: i + j == n - 1
-    pass
+    rows = []
+    for i in range(n):
+        row = []
+        for j in range(n):
+            row.append(1 if (i == j or i + j == n - 1) else 0)
+        rows.append(row)
+    return Matrix.from_list(rows)
