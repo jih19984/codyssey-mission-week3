@@ -1,6 +1,6 @@
 from matrix import Matrix
 from mac_engine import compute_score, judge, EPSILON
-from data_loader import load_data, normalize_label, extract_size_from_key, iter_pattern_cases, get_filters_for_size
+from data_loader import load_data, extract_size_from_key, iter_pattern_cases, get_filters_for_size
 from performance import measure_avg_time_ms, print_performance_table
 from report import ReportCollector
 
@@ -142,8 +142,3 @@ class NpuSimulatorApp:
         print("# [4] 결과 요약")
         print("#---")
         collector.print_summary()
-            
-
-
-
-
